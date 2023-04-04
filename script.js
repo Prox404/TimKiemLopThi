@@ -1,0 +1,1 @@
+document.getElementsByTagName("BODY")[0].textContent = "Hello World!";
