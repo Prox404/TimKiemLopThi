@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tìm_kiếm_lớp_thi.exe</title>
 </head>
+
 <body>
-    
+
+    <h1>Tìm kiếm lớp thi</h1>
+    <p>Chọn file excel chứa danh sách lớp thi</p>
+    <input type="file" accept=".xlsx" id="file">
+    <p>Nhập tên môn thi</p>
+    <input type="text" id="subject">
+    <button type="button" onclick="TimKiemLichThi()" id="btn">Tìm kiếm</button>
+
 </body>
+<script src="./read-excel-file.min.js"></script>
 <script src="./script.js"></script>
 </html>
