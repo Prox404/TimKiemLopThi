@@ -6,19 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tìm_kiếm_lớp_thi.exe</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-    <h1>Tìm kiếm lớp thi</h1>
-    <p>Chọn file excel chứa danh sách lớp thi</p>
-    <input type="file" accept=".xlsx" id="file">
-    <p>Nhập tên môn thi</p>
-    <input type="text" id="subject">
-    <button type="button" onclick="TimKiemLichThi()" id="btn">Tìm kiếm</button>
+    <div class="search-container">
+        <center>
+
+            <h1>Tìm kiếm <span style="color:#9c9c9c;">Lớp thi</span></h1>
+            <p style="margin-top: 30px;">Chọn file excel chứa danh sách lớp thi</p>
+            <input type="file" accept=".xlsx" id="file">
+            <p>Nhập tên môn thi</p>
+            <input type="text" id="subject">
+            <button type="button" onclick="TimKiemLichThi()" id="btn-search">Tìm kiếm</button>
+        </center>
+    </div>
 
     <table id="result" style="width: 100%">
-        <thead>
+        <thead class="table-head">
             <tr>
                 
                 <th>Thứ</th>
@@ -35,6 +41,9 @@
                 <th>Ghi chú</th>
             </tr>
         </thead>
+        <tbody>
+
+        </tbody>
     </table>
 </body>
 <script src="./read-excel-file.min.js"></script>
