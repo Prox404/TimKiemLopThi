@@ -5,12 +5,18 @@ let fileInput = document.getElementById('file');
 const TimKiemLichThi = () => {
     // var subject = document.getElementById('Subject').value;
     let subject = "CS 464 H, POS 351 F,MTH 203 DIS, CMU-ENG 230 DIS";
-    let table = document.getElementById('result');
+    let table = document.getElementById('result').getElementsByTagName('tbody')[0];
     subject = subject.toUpperCase();
     let subjectArray = subject.split(",");
     let indexOfMaNganh;
     let indexOfMaMon;
     let indexOfKhoiThi;
+
+    if (fileInput.files.length == 0) {
+        alert("Chưa chọn file !");
+        console.error("Chưa chọn file !");
+        return;
+    }
 
     subjectArray.map(function (item) {
         let Lop = item.trim().split(" ");
