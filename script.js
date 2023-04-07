@@ -1,16 +1,28 @@
-let fileInput = document.getElementById('file');
+let fileInput = document.getElementById('file-upload');
 
 //Input Subject : CMU-CS 303 DIS. IS 301 D
 
+const fileName = document.getElementById("file-name");
+
+fileInput.addEventListener("change", function() {
+  fileName.textContent = this.value.split("\\").pop();
+});
+
 const TimKiemLichThi = () => {
-    // var subject = document.getElementById('Subject').value;
-    let subject = "CS 464 H, POS 351 F,MTH 203 DIS, CMU-ENG 230 DIS";
+    var subject = document.getElementById('subject').value;
+    // let subject = "CS 464 H, POS 351 F,MTH 203 DIS, CMU-ENG 230 DIS";
     let table = document.getElementById('result').getElementsByTagName('tbody')[0];
     subject = subject.toUpperCase();
     let subjectArray = subject.split(",");
     let indexOfMaNganh;
     let indexOfMaMon;
     let indexOfKhoiThi;
+
+    if (subject.length == 0) {
+        alert("Chưa nhập môn thi !");
+        console.error("Chưa nhập môn thi !");
+        return;
+    }
 
     if (fileInput.files.length == 0) {
         alert("Chưa chọn file !");
@@ -68,6 +80,13 @@ const TimKiemLichThi = () => {
                 }else{
                     console.error("File không hợp lệ !");
                 }
+
+                
         });
     });
+}
+
+const Reset = () => {
+    let table = document.getElementById('result').getElementsByTagName('tbody')[0];
+    table.innerHTML = "";
 }
