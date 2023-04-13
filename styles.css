@@ -107,9 +107,14 @@ body {
   color: white;
 }
 
+#control{
+  margin-top: 15px;
+}
+
 .hidden {
   display: none;
 }
+
 
 table {
   border-spacing: 1;
