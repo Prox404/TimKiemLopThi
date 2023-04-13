@@ -80,7 +80,7 @@ body {
   color: #333;
 }
 
-/* .checkbox-style {
+.checkbox-style {
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -105,11 +105,16 @@ body {
   background-color: #16151a;
   border-color: #16151a;
   color: white;
-} */
+}
+
+#control{
+  margin-top: 15px;
+}
 
 .hidden {
   display: none;
 }
+
 
 table {
   border-spacing: 1;
