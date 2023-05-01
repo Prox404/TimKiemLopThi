@@ -2,294 +2,181 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tìm_kiếm_lớp_thi.exe</title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tìm_kiếm_lớp_thi.exe</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
 
-    <div class="search-container">
-        <center>
+  <div class="search-container">
+    <center>
 
-            <h1>TÌM KIẾM <span style="color:#9c9c9c;">LỚP THI</span></h1>
-            <p style="margin-top: 30px;">Chọn file excel chứa danh sách lớp thi</p>
+      <h1>TÌM KIẾM <span style="color:#9c9c9c;">LỚP THI</span></h1>
+      <p style="margin-top: 30px;">Chọn file excel chứa danh sách lớp thi</p>
 
-            <label for="file-upload" class="custom-file-upload">
-                <i><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
-                        width="1em" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M403.002 217.001C388.998 148.002 328.998 96 256 96c-57.998 0-107.998 32.998-132.998 81.001C63.002 183.002 16 233.998 16 296c0 65.996 53.999 120 120 120h260c55 0 100-45 100-100 0-52.998-40.996-96.001-92.998-98.999zM288 276v76h-64v-76h-68l100-100 100 100h-68z">
-                        </path>
-                    </svg></i><span id="file-name">Chọn tệp</span> 
-            </label>
-            <input id="file-upload" type="file" accept=".xlsx" />
-            
-            <p>Nhập tên môn thi</p>
-            <input type="text" id="subject" placeholder="ex: CS 464 H, POS 351 F">
-            <button type="button" onclick="TimKiemLichThi()" id="btn-search">Tìm kiếm</button>
-            <button type="button" onclick="Reset()" id="btn-reset">Reset</button>
-            <div class="hidden" id="control">
-                <label for="thu" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="thu"
-                    class="checkbox-input"
-                    onchange="toggleColumn(0)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="thu" class="checkbox-label" >Thứ</label>
-                </label>
-                <label for="ngaythi" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="ngaythi"
-                    class="checkbox-input"
-                    onchange="toggleColumn(1)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="ngaythi" class="checkbox-label" >Ngày thi</label>
-                </label>
-                <label for="giothi" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="giothi"
-                    class="checkbox-input"
-                    onchange="toggleColumn(2)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="giothi" class="checkbox-label" >Giờ thi</label>
-                </label>
-                <label for="mamon" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="mamon"
-                    class="checkbox-input"
-                    onchange="toggleColumn(3)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="mamon" class="checkbox-label" >Mã môn</label>
-                </label>
-                <label for="monthi" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="monthi"
-                    class="checkbox-input"
-                    onchange="toggleColumn(4)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="monthi" class="checkbox-label" >Môn thi</label>
-                </label>
-                <label for="hinhthuc" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="hinhthuc"
-                    class="checkbox-input"
-                    onchange="toggleColumn(5)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="hinhthuc" class="checkbox-label" >Hình thức thi</label>
-                </label>
-                <label for="khoithi" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="khoithi"
-                    class="checkbox-input"
-                    onchange="toggleColumn(6)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="khoithi" class="checkbox-label" >Khối thi</label>
-                </label>
-                <label for="phongthi" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="phongthi"
-                    class="checkbox-input"
-                    onchange="toggleColumn(7)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="phongthi" class="checkbox-label" >Phòng thi</label>
-                </label>
-                <label for="diadiem" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="diadiem"
-                    class="checkbox-input"
-                    onchange="toggleColumn(8)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="diadiem" class="checkbox-label" >Địa điểm</label>
-                </label>
-                <label for="ghichu" class="checkbox-style">
-                  <input
-                    type="checkbox"
-                    id="ghichu"
-                    class="checkbox-input"
-                    onchange="toggleColumn(9)"
-                    checked
-                  />
-                  <div class="checkbox-box">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 5 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clip-rule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                  <label for="ghichu" class="checkbox-label" >Ghi chú</label>
-                </label>
-            </div>
-        </center>
-    </div>
-    
+      <label for="file-upload" class="custom-file-upload">
+        <i><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em"
+            width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M403.002 217.001C388.998 148.002 328.998 96 256 96c-57.998 0-107.998 32.998-132.998 81.001C63.002 183.002 16 233.998 16 296c0 65.996 53.999 120 120 120h260c55 0 100-45 100-100 0-52.998-40.996-96.001-92.998-98.999zM288 276v76h-64v-76h-68l100-100 100 100h-68z">
+            </path>
+          </svg></i><span id="file-name">Chọn tệp</span>
+      </label>
+      <input id="file-upload" type="file" accept=".xlsx" />
 
-    <table id="result" style="width: 100%">
-        <thead class="table-head">
-            <tr>
+      <p>Nhập tên môn thi</p>
+      <input type="text" id="subject" placeholder="ex: CS 464 H, POS 351 F">
+      <button type="button" onclick="TimKiemLichThi()" id="btn-search">Tìm kiếm</button>
+      <button type="button" onclick="Reset()" id="btn-reset">Reset</button>
+      <div class="hidden" id="control">
+        <label for="thu" class="checkbox-style">
+          <input type="checkbox" id="thu" class="checkbox-input" onchange="toggleColumn(0)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="thu" class="checkbox-label">Thứ</label>
+        </label>
+        <label for="ngaythi" class="checkbox-style">
+          <input type="checkbox" id="ngaythi" class="checkbox-input" onchange="toggleColumn(1)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="ngaythi" class="checkbox-label">Ngày thi</label>
+        </label>
+        <label for="giothi" class="checkbox-style">
+          <input type="checkbox" id="giothi" class="checkbox-input" onchange="toggleColumn(2)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="giothi" class="checkbox-label">Giờ thi</label>
+        </label>
+        <label for="mamon" class="checkbox-style">
+          <input type="checkbox" id="mamon" class="checkbox-input" onchange="toggleColumn(3)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="mamon" class="checkbox-label">Mã môn</label>
+        </label>
+        <label for="monthi" class="checkbox-style">
+          <input type="checkbox" id="monthi" class="checkbox-input" onchange="toggleColumn(4)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="monthi" class="checkbox-label">Môn thi</label>
+        </label>
+        <label for="hinhthuc" class="checkbox-style">
+          <input type="checkbox" id="hinhthuc" class="checkbox-input" onchange="toggleColumn(5)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="hinhthuc" class="checkbox-label">Hình thức thi</label>
+        </label>
+        <label for="khoithi" class="checkbox-style">
+          <input type="checkbox" id="khoithi" class="checkbox-input" onchange="toggleColumn(6)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="khoithi" class="checkbox-label">Khối thi</label>
+        </label>
+        <label for="phongthi" class="checkbox-style">
+          <input type="checkbox" id="phongthi" class="checkbox-input" onchange="toggleColumn(7)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="phongthi" class="checkbox-label">Phòng thi</label>
+        </label>
+        <label for="diadiem" class="checkbox-style">
+          <input type="checkbox" id="diadiem" class="checkbox-input" onchange="toggleColumn(8)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="diadiem" class="checkbox-label">Địa điểm</label>
+        </label>
+        <label for="ghichu" class="checkbox-style">
+          <input type="checkbox" id="ghichu" class="checkbox-input" onchange="toggleColumn(9)" checked />
+          <div class="checkbox-box">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 5 20 20" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <label for="ghichu" class="checkbox-label">Ghi chú</label>
+        </label>
+      </div>
+    </center>
+  </div>
 
-                <th>Thứ</th>
-                <th>Ngày thi</th>
-                <th>Giờ thi</th>
 
-                <th>Mã môn</th>
-                <th>Môn thi</th>
-                <th>Hình thức thi</th>
-                <th>Khối thi</th>
+  <table id="result" style="width: 100%">
+    <thead class="table-head">
+      <tr>
 
-                <th>Phòng thi</th>
-                <th>Địa điểm</th>
-                <th>Ghi chú</th>
-            </tr>
-        </thead>
-        <tbody>
+        <th>Thứ</th>
+        <th>Ngày thi</th>
+        <th>Giờ thi</th>
 
-        </tbody>
-    </table>
+        <th>Mã môn</th>
+        <th>Môn thi</th>
+        <th>Hình thức thi</th>
+        <th>Khối thi</th>
+
+        <th>Phòng thi</th>
+        <th>Địa điểm</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+  <p style="text-align: right; margin-top: 10px" id="take-photo">
+    <button class="btn btn-primary"onclick="takeshot()">
+      Take Screenshot
+    </button>
+  </p>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
 <script src="./read-excel-file.min.js"></script>
 <script src="./script.js"></script>
 

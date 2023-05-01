@@ -38,7 +38,7 @@ const TimKiemLichThi = async () => {
         let MaMon = Lop[0] + " " + Lop[1];
         let KhoiThi = Lop[2];
 
-        readXlsxFile(fileInput.files[0]).then(function (rows) {
+        readXlsxFile(fileInput.files[0], {sheet: 'LT'}).then(function (rows) {
             // `rows` is an array of rows
             // each row being an array of cells.
 
@@ -91,6 +91,8 @@ const TimKiemLichThi = async () => {
         if (numberRowInsert > 0) {
             let control = document.getElementById('control');
             control.style.display = "block";
+            let takeShotControl = document.getElementById('take-photo');
+            takeShotControl.style.display = "block";
         }
     } , 1000)
 }
@@ -100,6 +102,10 @@ const Reset = () => {
     table.innerHTML = "";
     let control = document.getElementById('control');
     control.style.display = "none";
+    let takeShot = document.getElementById('output');
+    takeShot.innerHTML = "";
+    let takeShotControl = document.getElementById('take-photo');
+    takeShotControl.style.display = "none";
 }
 
 const toggleColumn = (index) => {
@@ -115,4 +121,21 @@ const toggleColumn = (index) => {
         //     }
         // });
     }
+}
+
+function takeshot() {
+    let div =
+        document.getElementById('result');
+
+    // Use the html2canvas
+    // function to take a screenshot
+    // and append it
+    // to the output div
+    html2canvas(div).then(
+        function (canvas) {
+            let link = document.createElement('a');
+            link.download = 'LichThi.png';
+            link.href = canvas.toDataURL()
+            link.click();
+        })
 }
