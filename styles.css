@@ -27,6 +27,17 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
 }
 
+.btn{
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  background-color: #16151a;
+  color: #fff;
+  cursor: pointer;
+}
+
 #btn-search {
   padding: 10px;
   /* border: 1px solid #ccc; */
@@ -152,6 +163,7 @@ table tbody tr:last-child {
 table td,
 table th {
   text-align: left;
+  word-wrap: break-word;
 }
 
 table td.l,
@@ -277,4 +289,8 @@ tbody tr:hover {
   tbody tr {
     font-size: 14px;
   }
+}
+
+#take-photo{
+  display: none;
 }
